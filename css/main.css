@@ -1,0 +1,174 @@
+/*
+laranja: rgb(246,94,0);
+cinza-azulado: rgb(13,31,41);
+azul-escuro: rgb(1, 17, 23);
+*/
+main{
+    display:flex;
+}
+.botao{
+    background-color: rgb(246,94,0);
+    color: #fff;
+    border-radius: 5px;
+    border-color: rgb(246,94,0);
+}
+* {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    box-sizing:border-box;
+}
+html {
+    margin:0;
+}
+
+.top mark {
+    color: rgb(246,94,0);
+    text-transform: lowercase;
+    background-color: rgb(255,255,255);
+}
+
+.top {
+    display: flex;
+    flex-direction: row;
+}
+
+section, .divisoria nav {
+    width:900px;
+    margin: auto;
+}
+
+.top figure {
+    position:relative;
+    width:500px;
+}
+
+.top article {
+    width: 300px;  
+}
+
+.top figcaption {
+    position: absolute;
+    top: 0;
+    left: 200px;
+    background: rgb(13,31,41);
+    color: rgb(246,94,0);
+    padding: 5px;
+    font-size: 0.7em;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.phone {
+    color: #fff;    
+}
+.divisoria {
+    width: 100%;
+    background: rgb(13,31,41);
+    Justify-content: center;
+}
+
+.divisoria ul {
+    display: flex;
+    flex-direction:row;
+    padding-left: 0;
+    list-style: none;
+}
+.divisoria li {
+    padding:10px 20px; 
+}
+.divisoria li:first-child, .divisoria li:hover {
+    background-color: rgb(246,94,0);
+    
+}
+
+.divisoria a {
+    text-decoration: none;  
+    color: #fff;
+}
+
+main section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.box {
+    width: 270px;
+    border: 3px solid  rgb(220,220,220);
+}
+
+.box figure {
+    width: 100%;
+    margin-left: 0;
+    position: relative;
+}
+
+.box figcaption{
+    position:absolute;
+    bottom:-5px;
+    width:100%;
+    padding:5px 5px 15px;
+    text-align: center;
+    background: rgb(13,31,41); 
+    color: #fff;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 75%, 55% 75%, 50% 100%, 45% 75%, 0% 75%);
+}
+.box1{
+    width: 400px;
+    position: relative;
+}
+
+.box img {
+    width:100%;
+    height: 150px;
+}
+
+.box p {
+    font-size:0.8em;   
+}
+.div{
+    Justify-content: center;
+    Gap: 30-70px;
+}
+footer section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.futer{
+background-color: rgb(13,31,41);
+color: white;
+display:flex;
+}
+.sec1{
+display:flex;
+}
+.tabl{
+    background-color: rgb(1, 17, 23);
+    width: 400px;
+    position: relative;
+    border-radius: 5px;
+}
+.b{
+    background-color: rgb(1, 17, 23);
+    border: 0px;
+    background: rgb(1, 17, 23);
+}
+.stb{
+    border:0px;
+
+}
+.linh{
+    position: relative;
+    top: 60px;
+    height: 190px;
+    width: 1px;
+    background-color: rgb(4, 15, 23);
+}
+form div
+{
+    display:flex;
+    flex-direction:column;
+    justify-content: center;
+    margin-bottom:2px;
+}
+
