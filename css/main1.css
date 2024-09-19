@@ -1,0 +1,30 @@
+
+header {
+    width: auto;
+    height: 700px;
+    background-image: url(/img/banner.jpg);
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+
+.botao{
+    text-decoration: none;
+    color: white;
+    padding: 0.6em;
+    text-align: center;
+    border: white 1px solid;
+    border-radius: 30px;
+
+}
+.botaoc{
+    text-decoration: none;
+    color: gray;
+    padding: 0.6em;
+    text-align: center;
+}
+
+.divisoriaul{
+    display: flex;
+    list-style: none;
+    gap: 3em;
+}
