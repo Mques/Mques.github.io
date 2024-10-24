@@ -1,0 +1,19 @@
+@media (max-width : 540px)
+{
+    .box
+    {
+        border: 1px black solid;
+        display:flex;
+        flex-direction: column;;
+    }
+}
+@media (min-width : 541px)
+{
+    .box
+    {
+        border:1px black solid;
+        display:flex;
+        flex-direction: row;
+
+    }
+}
