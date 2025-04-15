@@ -1,4 +1,4 @@
-// 1
+
 function inverterFrase() {
   const frase = document.getElementById('frase').value;
   let invertida = "";
@@ -8,7 +8,7 @@ function inverterFrase() {
   document.getElementById('saidaFrase').innerText = invertida;
 }
 
-// 2
+
 function destacarVogais() {
   const frase = document.getElementById('vogaisFrase').value;
   let resultado = "";
@@ -23,7 +23,7 @@ function destacarVogais() {
   document.getElementById('saidaVogais').innerHTML = resultado;
 }
 
-// 3
+
 function contarPalavras() {
   const texto = document.getElementById('textoContagem').value.toLowerCase();
   let palavra = "";
@@ -44,7 +44,7 @@ function contarPalavras() {
   }
 }
 
-// 4
+
 function estatisticasTexto() {
   const texto = document.getElementById('textoEstatistica').value.toLowerCase();
   let palavra = "";
@@ -74,7 +74,7 @@ function estatisticasTexto() {
     `Mais frequente: "${maisFreq}" (${maxFreq}x), Total de palavras: ${totalPalavras}, Letras: ${totalLetras}`;
 }
 
-// 5
+
 function substituirTexto() {
   const texto = document.getElementById('textoSubstituir').value;
   const procurar = document.getElementById('procurar').value;
@@ -93,7 +93,7 @@ function substituirTexto() {
   document.getElementById('saidaSubstituida').innerText = resultado;
 }
 
-// 6
+
 function dataPorExtenso() {
   const data = document.getElementById('dataExtenso').value;
   const dia = data.substring(0, 2);
@@ -104,7 +104,7 @@ function dataPorExtenso() {
   document.getElementById('saidaDataExtenso').innerText = extenso;
 }
 
-// 7
+
 function verificarSenha() {
   const senha = document.getElementById('senha').value;
   let temMinuscula = false, temMaiuscula = false, temNumero = false, temEspecial = false;
@@ -124,7 +124,7 @@ function verificarSenha() {
   saida.className = forca;
 }
 
-// 8
+
 function codificarTENIS_POLAR() {
   const texto = document.getElementById('textoCodificar').value;
   const mapa = { T: 'P', E: 'O', N: 'L', I: 'A', S: 'R', P: 'T', O: 'E', L: 'N', A: 'I', R: 'S' };
@@ -142,7 +142,7 @@ function codificarTENIS_POLAR() {
   document.getElementById('saidaCodificada').innerText = resultado;
 }
 
-// 9
+
 function calcularDiasDeVida() {
   const dataStr = document.getElementById('dataNascimento').value;
   const dia = parseInt(dataStr.substring(0, 2), 10);
@@ -156,7 +156,7 @@ function calcularDiasDeVida() {
 }
 
 
-// 10
+
 function diferencaSemanas() {
   const data1 = new Date(document.getElementById('data1').value);
   const data2 = new Date(document.getElementById('data2').value);
