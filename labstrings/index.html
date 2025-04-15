@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Laboratório de Strings e Datas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Laboratório de Strings e Datas</h1>
+
+  <!-- 1. Inverter frase -->
+  <section>
+    <h2>1. Inverter Frase</h2>
+    <input type="text" id="frase" placeholder="Digite uma frase">
+    <button onclick="inverterFrase()">Inverter</button>
+    <p id="saidaFrase"></p>
+  </section>
+
+  <!-- 2. Negrito nas vogais -->
+  <section>
+    <h2>2. Vogais em Negrito</h2>
+    <input type="text" id="vogaisFrase" placeholder="Digite uma frase">
+    <button onclick="destacarVogais()">Destacar</button>
+    <p id="saidaVogais"></p>
+  </section>
+
+  <!-- 3. Contador de palavras -->
+  <section>
+    <h2>3. Contador de Palavras</h2>
+    <textarea id="textoContagem" rows="4" placeholder="Digite um texto"></textarea><br>
+    <button onclick="contarPalavras()">Contar</button>
+    <table id="tabelaPalavras"></table>
+  </section>
+
+  <!-- 4. Estatísticas do texto -->
+  <section>
+    <h2>4. Estatísticas do Texto</h2>
+    <textarea id="textoEstatistica" rows="4" placeholder="Digite um texto"></textarea><br>
+    <button onclick="estatisticasTexto()">Analisar</button>
+    <p id="saidaEstatisticas"></p>
+  </section>
+
+  <!-- 5. Substituir texto -->
+  <section>
+    <h2>5. Substituir Texto</h2>
+    <textarea id="textoSubstituir" rows="3" placeholder="Texto original"></textarea><br>
+    <input type="text" id="procurar" placeholder="Procurar">
+    <input type="text" id="substituir" placeholder="Substituir">
+    <button onclick="substituirTexto()">Substituir</button>
+    <p id="saidaSubstituida"></p>
+  </section>
+
+  <!-- 6. Data por extenso -->
+  <section>
+    <h2>6. Data por Extenso</h2>
+    <input type="text" id="dataExtenso" placeholder="dd/mm/aaaa">
+    <button onclick="dataPorExtenso()">Converter</button>
+    <p id="saidaDataExtenso"></p>
+  </section>
+
+  <!-- 7. Força da senha -->
+  <section>
+    <h2>7. Força da Senha</h2>
+    <input type="text" id="senha" placeholder="Digite uma senha" oninput="verificarSenha()">
+    <p id="forcaSenha"></p>
+  </section>
+
+  <!-- 8. Codificador TENIS/POLAR -->
+  <section>
+    <h2>8. Codificador TENIS/POLAR</h2>
+    <input type="text" id="textoCodificar" placeholder="Digite a frase">
+    <button onclick="codificarTENIS_POLAR()">Codificar</button>
+    <p id="saidaCodificada"></p>
+  </section>
+
+  <!-- 9. Dias de vida -->
+  <section>
+    <h2>9. Dias de Vida</h2>
+    <input type="text" id="dataNascimento" placeholder="dd/mm/aaaa">
+    <button onclick="calcularDiasDeVida()">Calcular</button>
+    <p id="saidaDiasVida"></p>
+  </section>
+
+  <!-- 10. Distância em semanas -->
+  <section>
+    <h2>10. Diferença em Semanas</h2>
+    <input type="date" id="data1">
+    <input type="date" id="data2">
+    <button onclick="diferencaSemanas()">Calcular</button>
+    <p id="saidaSemanas"></p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
