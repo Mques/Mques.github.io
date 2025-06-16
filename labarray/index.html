@@ -2,13 +2,69 @@
 <html lang="pt-BR">
 <head>
   <meta charset="UTF-8">
-  <title>Atividade Arrays e Funções</title>
+  <title>Atividade Arrays e Funções Numéricas</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    h2 { margin-top: 30px; }
+    input, button { margin: 5px; padding: 5px; }
+    .result { margin-top: 10px; font-weight: bold; }
+  </style>
 </head>
 <body>
-  <h1>Atividade - Arrays e Funções Numéricas</h1>
+
+  <h1>Atividade - Arrays e Funções</h1>
+
+  <!-- Funções Numéricas -->
+  <h2>1) Funções Numéricas</h2>
+  <label>Digite um array (ex: 1,2,3):</label><br>
+  <input type="text" id="arrayInput">
+  <button onclick="calcSum()">Somar</button>
+  <button onclick="calcSumOdds()">Somar Ímpares</button>
+  <button onclick="calcProduct()">Produto</button>
+  <div id="result1" class="result"></div>
+
+  <!-- Números Primos -->
+  <h2>2) Números Primos</h2>
+  <label>Digite 1 número (quantidade de primos) ou 2 números (intervalo):</label><br>
+  <input type="text" id="primeInput">
+  <button onclick="generatePrimes()">Gerar Primos</button>
+  <div id="result2" class="result"></div>
+
+  <!-- Números Romanos -->
+  <h2>3) Conversão para Números Romanos</h2>
+  <label>Digite um número decimal:</label><br>
+  <input type="number" id="romanInput">
+  <button onclick="convertRoman()">Converter</button>
+  <div id="result3" class="result"></div>
+
+  <!-- Saque Mínimo -->
+  <h2>4) Saque Mínimo</h2>
+  <label>Digite um valor para saque:</label><br>
+  <input type="number" id="withdrawInput">
+  <button onclick="calcWithdrawal()">Calcular Saque</button>
+  <div id="result4" class="result"></div>
 
   <script>
     // 1) Funções Numéricas
+    function calcSum() {
+      const arr = getArray();
+      document.getElementById('result1').innerText = "Soma: " + sum(arr);
+    }
+
+    function calcSumOdds() {
+      const arr = getArray();
+      document.getElementById('result1').innerText = "Soma dos ímpares: " + sumOdds(arr);
+    }
+
+    function calcProduct() {
+      const arr = getArray();
+      document.getElementById('result1').innerText = "Produto: " + product(arr);
+    }
+
+    function getArray() {
+      return document.getElementById('arrayInput').value.split(',').map(Number);
+    }
+
     function sum(arr) {
       return arr.reduce((acc, num) => acc + num, 0);
     }
@@ -21,12 +77,19 @@
       return arr.reduce((acc, num) => acc * num, 1);
     }
 
-    console.log("----- Funções Numéricas -----");
-    console.log("sum([1,2,3]) =", sum([1, 2, 3]));
-    console.log("sumOdds([1,2,3]) =", sumOdds([1, 2, 3]));
-    console.log("product([1,2,3]) =", product([1, 2, 3]));
-
     // 2) Números Primos
+    function generatePrimes() {
+      const input = document.getElementById('primeInput').value.split(',').map(Number);
+      let result = [];
+      if (input.length === 1) {
+        result = getFirstNPrimes(input[0]);
+      } else if (input.length === 2) {
+        const [start, end] = input[0] < input[1] ? input : [input[1], input[0]];
+        result = getPrimesInRange(start, end);
+      }
+      document.getElementById('result2').innerText = "Primos: " + result.join(", ");
+    }
+
     function isPrime(n) {
       if (n < 2) return false;
       for (let i = 2; i <= Math.sqrt(n); i++) {
@@ -35,40 +98,35 @@
       return true;
     }
 
-    function primeSeries(...args) {
-      let result = [];
-      if (args.length === 1) {
-        let count = 0;
-        let num = 2;
-        while (count < args[0]) {
-          if (isPrime(num)) {
-            result.push(num);
-            count++;
-          }
-          num++;
-        }
-      } else if (args.length === 2) {
-        let [start, end] = args.sort((a, b) => a - b);
-        for (let i = start; i <= end; i++) {
-          if (isPrime(i)) result.push(i);
-        }
+    function getFirstNPrimes(n) {
+      let primes = [], num = 2;
+      while (primes.length < n) {
+        if (isPrime(num)) primes.push(num);
+        num++;
       }
-      return result;
+      return primes;
     }
 
-    console.log("----- Números Primos -----");
-    console.log("4 primeiros primos:", primeSeries(4));
-    console.log("Primos entre 2 e 10:", primeSeries(2, 10));
-    console.log("Primos entre 10 e 2:", primeSeries(10, 2));
+    function getPrimesInRange(start, end) {
+      let primes = [];
+      for (let i = start; i <= end; i++) {
+        if (isPrime(i)) primes.push(i);
+      }
+      return primes;
+    }
 
-    // 3) Conversão para Números Romanos
+    // 3) Números Romanos
+    function convertRoman() {
+      const num = parseInt(document.getElementById('romanInput').value);
+      document.getElementById('result3').innerText = "Número Romano: " + toRoman(num);
+    }
+
     function toRoman(num) {
       const romanMap = [
         [1000, "M"], [900, "CM"], [500, "D"], [400, "CD"],
         [100, "C"], [90, "XC"], [50, "L"], [40, "XL"],
         [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"]
       ];
-
       let result = "";
       for (let [value, numeral] of romanMap) {
         while (num >= value) {
@@ -79,36 +137,27 @@
       return result;
     }
 
-    console.log("----- Números Romanos -----");
-    console.log("3 =", toRoman(3));
-    console.log("48 =", toRoman(48));
-    console.log("575 =", toRoman(575));
-
     // 4) Saque Mínimo
-    function minimumWithdrawal(amount) {
+    function calcWithdrawal() {
+      let amount = parseInt(document.getElementById('withdrawInput').value);
       const notes = [100, 50, 20, 10, 5, 2];
-      let result = {};
+      let result = "";
 
       for (let note of notes) {
         let count = Math.floor(amount / note);
         if (count > 0) {
-          result[note] = count;
+          result += `R$${note}: ${count} nota(s)\n`;
           amount -= count * note;
         }
       }
 
       if (amount > 0) {
-        console.log("Não é possível sacar o valor exato com as cédulas disponíveis.");
+        result += "Não é possível sacar o valor exato com as cédulas disponíveis.";
       }
 
-      return result;
+      document.getElementById('result4').innerText = result;
     }
-
-    console.log("----- Saque Mínimo -----");
-    console.log("R$1280:", minimumWithdrawal(1280));
-    console.log("R$5705:", minimumWithdrawal(5705));
-    console.log("R$892:", minimumWithdrawal(892));
-
   </script>
+
 </body>
 </html>
