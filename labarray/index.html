@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Atividade Arrays e Funções</title>
+</head>
+<body>
+  <h1>Atividade - Arrays e Funções Numéricas</h1>
+
+  <script>
+    // 1) Funções Numéricas
+    function sum(arr) {
+      return arr.reduce((acc, num) => acc + num, 0);
+    }
+
+    function sumOdds(arr) {
+      return arr.filter(num => num % 2 !== 0).reduce((acc, num) => acc + num, 0);
+    }
+
+    function product(arr) {
+      return arr.reduce((acc, num) => acc * num, 1);
+    }
+
+    console.log("----- Funções Numéricas -----");
+    console.log("sum([1,2,3]) =", sum([1, 2, 3]));
+    console.log("sumOdds([1,2,3]) =", sumOdds([1, 2, 3]));
+    console.log("product([1,2,3]) =", product([1, 2, 3]));
+
+    // 2) Números Primos
+    function isPrime(n) {
+      if (n < 2) return false;
+      for (let i = 2; i <= Math.sqrt(n); i++) {
+        if (n % i === 0) return false;
+      }
+      return true;
+    }
+
+    function primeSeries(...args) {
+      let result = [];
+      if (args.length === 1) {
+        let count = 0;
+        let num = 2;
+        while (count < args[0]) {
+          if (isPrime(num)) {
+            result.push(num);
+            count++;
+          }
+          num++;
+        }
+      } else if (args.length === 2) {
+        let [start, end] = args.sort((a, b) => a - b);
+        for (let i = start; i <= end; i++) {
+          if (isPrime(i)) result.push(i);
+        }
+      }
+      return result;
+    }
+
+    console.log("----- Números Primos -----");
+    console.log("4 primeiros primos:", primeSeries(4));
+    console.log("Primos entre 2 e 10:", primeSeries(2, 10));
+    console.log("Primos entre 10 e 2:", primeSeries(10, 2));
+
+    // 3) Conversão para Números Romanos
+    function toRoman(num) {
+      const romanMap = [
+        [1000, "M"], [900, "CM"], [500, "D"], [400, "CD"],
+        [100, "C"], [90, "XC"], [50, "L"], [40, "XL"],
+        [10, "X"], [9, "IX"], [5, "V"], [4, "IV"], [1, "I"]
+      ];
+
+      let result = "";
+      for (let [value, numeral] of romanMap) {
+        while (num >= value) {
+          result += numeral;
+          num -= value;
+        }
+      }
+      return result;
+    }
+
+    console.log("----- Números Romanos -----");
+    console.log("3 =", toRoman(3));
+    console.log("48 =", toRoman(48));
+    console.log("575 =", toRoman(575));
+
+    // 4) Saque Mínimo
+    function minimumWithdrawal(amount) {
+      const notes = [100, 50, 20, 10, 5, 2];
+      let result = {};
+
+      for (let note of notes) {
+        let count = Math.floor(amount / note);
+        if (count > 0) {
+          result[note] = count;
+          amount -= count * note;
+        }
+      }
+
+      if (amount > 0) {
+        console.log("Não é possível sacar o valor exato com as cédulas disponíveis.");
+      }
+
+      return result;
+    }
+
+    console.log("----- Saque Mínimo -----");
+    console.log("R$1280:", minimumWithdrawal(1280));
+    console.log("R$5705:", minimumWithdrawal(5705));
+    console.log("R$892:", minimumWithdrawal(892));
+
+  </script>
+</body>
+</html>
