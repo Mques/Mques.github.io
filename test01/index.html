@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Atividade Recuperação 1 - PCWeb</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; }
+    fieldset { margin-bottom: 20px; }
+    legend { font-weight: bold; }
+    ul, table { margin-top: 10px; }
+    table, th, td { border: 1px solid black; border-collapse: collapse; padding: 5px; }
+    th { background-color: #ddd; }
+  </style>
+</head>
+<body>
+
+<h1>Atividade de Recuperação - Programação de Clientes Web</h1>
+
+<!-- Questão 1: Computador de Bordo -->
+<fieldset>
+  <legend>Questão 1 - Computador de Bordo</legend>
+  <label>Dinheiro disponível (R$): </label>
+  <input type="number" id="q01-dinheiro">
+  <button onclick="questao1()">Calcular</button>
+  <ul id="q01-result"></ul>
+</fieldset>
+
+<!-- Questão 2: IMC -->
+<fieldset>
+  <legend>Questão 2 - Calculadora de IMC</legend>
+  <label>Peso (kg): </label>
+  <input type="number" id="q02-peso" step="0.1">
+  <label>Altura (m): </label>
+  <input type="number" id="q02-altura" step="0.01">
+  <button onclick="questao2()">Calcular IMC</button>
+  <ul id="q02-result"></ul>
+</fieldset>
+
+<!-- Questão 3: Lançamento de Dados -->
+<fieldset>
+  <legend>Questão 3 - Simulação de Dados (1 milhão de lançamentos)</legend>
+  <button onclick="questao3()">Simular</button>
+  <table>
+    <thead>
+      <tr><th>Face</th><th>Ocorrências</th><th>Frequência (%)</th></tr>
+    </thead>
+    <tbody id="q03-result"></tbody>
+  </table>
+</fieldset>
+
+<!-- Questão 4: Inversor de Nomes -->
+<fieldset>
+  <legend>Questão 4 - Inversor de Nomes</legend>
+  <input type="text" id="q04-nome" placeholder="Digite um nome">
+  <button onclick="addNome()">Adicionar Nome</button>
+  <h4>Nomes Digitados:</h4>
+  <ul id="q04-lista"></ul>
+  <button onclick="inverterNomes()">Inverter</button>
+  <h4>Nomes Invertidos:</h4>
+  <ul id="q04-invertidos"></ul>
+</fieldset>
+
+<!-- Questão 5: Palíndromo -->
+<fieldset>
+  <legend>Questão 5 - Verificador de Palíndromo</legend>
+  <input type="text" id="q05-palavra" placeholder="Digite uma palavra">
+  <button onclick="verificarPalindromo()">Verificar</button>
+  <p id="q05-result"></p>
+</fieldset>
+
+<script>
+  // Questão 1
+  function questao1() {
+    const dinheiro = parseFloat(document.getElementById("q01-dinheiro").value) || 0;
+    const precoLitro = 7;
+    const kmPorLitro = 20;
+    const litros = dinheiro / precoLitro;
+    const autonomia = litros * kmPorLitro;
+    document.getElementById("q01-result").innerHTML = `
+      <li>Você abastecerá ${litros.toFixed(2)} litros.</li>
+      <li>Sua autonomia será de ${autonomia.toFixed(2)} km.</li>`;
+  }
+
+  // Questão 2
+  function questao2() {
+    const peso = parseFloat(document.getElementById("q02-peso").value) || 0;
+    const altura = parseFloat(document.getElementById("q02-altura").value) || 1;
+    const imc = peso / (altura * altura);
+    let faixa = "";
+
+    if (imc < 18.5) faixa = "Abaixo do peso";
+    else if (imc < 25) faixa = "Peso normal";
+    else if (imc < 30) faixa = "Levemente acima do peso";
+    else if (imc < 35) faixa = "Obesidade grau I";
+    else if (imc < 40) faixa = "Obesidade grau II (severa)";
+    else faixa = "Obesidade grau III (mórbida)";
+
+    document.getElementById("q02-result").innerHTML = `
+      <li>Seu IMC é ${imc.toFixed(2)}</li>
+      <li>Você está na faixa: ${faixa}</li>`;
+  }
+
+  // Questão 3
+  function questao3() {
+    const resultado = [0, 0, 0, 0, 0, 0];
+    const totalLancamentos = 1000000;
+
+    for (let i = 0; i < totalLancamentos; i++) {
+      const face = Math.floor(Math.random() * 6);
+      resultado[face]++;
+    }
+
+    let html = "";
+    resultado.forEach((ocorrencias, index) => {
+      const freq = (ocorrencias / totalLancamentos * 100).toFixed(2);
+      html += `<tr>
+                <td>${index + 1}</td>
+                <td>${ocorrencias}</td>
+                <td>${freq}%</td>
+              </tr>`;
+    });
+    document.getElementById("q03-result").innerHTML = html;
+  }
+
+  // Questão 4
+  const nomes = [];
+
+  function addNome() {
+    const nome = document.getElementById("q04-nome").value.trim();
+    if (nome) {
+      nomes.push(nome);
+      document.getElementById("q04-lista").innerHTML += `<li>${nome}</li>`;
+      document.getElementById("q04-nome").value = "";
+    }
+  }
+
+  function inverterNomes() {
+    let invertidos = nomes.map(nome => nome.split("").reverse().join(""));
+    let html = invertidos.map(n => `<li>${n}</li>`).join("");
+    document.getElementById("q04-invertidos").innerHTML = html;
+  }
+
+  // Questão 5
+  function verificarPalindromo() {
+    const palavra = document.getElementById("q05-palavra").value.trim().toLowerCase();
+    const invertida = palavra.split("").reverse().join("");
+    const resultado = (palavra && palavra === invertida) ? "é um palíndromo" : "não é um palíndromo";
+    document.getElementById("q05-result").innerText = `A palavra "${palavra}" ${resultado}.`;
+  }
+</script>
+
+</body>
+</html>
